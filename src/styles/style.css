@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
 body {
     background-color: hsl(212, 45%, 89%);
 }
@@ -9,6 +10,7 @@ body {
 }
 
 .card {
+    box-sizing: border-box;
     border-radius: 20px;
     background-color: hsl(0, 0%, 100%);
     max-width: 320px;
