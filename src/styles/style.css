@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
 body {
     background-color: hsl(212, 45%, 89%);
 }
@@ -18,22 +19,22 @@ body {
     padding: 16px;
     margin: 0 auto;
 }
-.content {
-    width: 300px;
-    margin: 0 auto;
-}
+
 img {
     border-radius: 9px;
     max-width: 100%;
 }
 
-h2, p {
+h2,
+p {
     font-family: 'Outfit', sans-serif;
     text-align: center;
 }
+
 h2 {
     color: hsl(218, 44%, 22%);
 }
+
 p {
     font-size: 15px;
     color: hsl(220, 15%, 55%);
