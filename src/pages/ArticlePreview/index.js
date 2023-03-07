@@ -19,8 +19,8 @@ export default function ArticlePreview() {
                                 <div className="flex gap-[16px] items-center">
                                     <img alt="avatar" className="rounded-full h-[40px] w-[40px]" src="/images/ArticlePreview/avatar-michelle.jpg" />
                                     <div>
-                                        <p>Michelle Appleton</p>
-                                        <p className="text-[hsl(212,23%,69%)]">28 Jun 2020</p>
+                                        <p className="tracking-[0.01em] text-[13px]">Michelle Appleton</p>
+                                        <p className="text-[hsl(212,23%,69%)] text-[13px]">28 Jun 2020</p>
                                     </div>
                                 </div>
                                 <div className="bg-[hsl(210,46%,95%)] p-[15px] rounded-full">
