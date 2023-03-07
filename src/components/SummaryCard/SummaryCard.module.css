@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap');
+
+.container {
+    box-sizing: border-box;
+    color: hsl(0, 0%, 100%);
+    font-family: 'Hanken Grotesk', sans-serif;
+
+}
+
+.topSummary {
+    box-sizing: border-box;
+    padding: 25px;
+    text-align: center;
+    height: 356px;
+    background: linear-gradient(180deg, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+}
+
+.topSummary h1 {
+    color: hsla(0, 0%, 100%, 0.5);
+    font-size: 18px;
+    line-height: 0%;
+    margin-bottom: 25px;
+}
+
+.topSummary p {
+    color: hsla(0, 0%, 100%, 0.5);
+}
+
+.cardDetail p {
+    font-size: 16px;
+    font-weight: 500;
+    width: 253px;
+    margin: 0 auto;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 139px;
+    height: 139px;
+    border-radius: 100px;
+    background: linear-gradient(180deg, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+}
+
+.result h2,
+.result p {
+    margin: 0;
+}
+
+.result h2 {
+    font-size: 56px;
+    font-weight: 800;
+}
+
+.result p {
+    color: hsla(0, 0%, 100%, 0.3);
+}
+
+.summary {
+    color: hsl(0, 0%, 0%);
+    padding: 0 30px;
+}
+
+.summary h1 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 25px 0;
+}
+
+.summaryBar {
+    margin-bottom: 16px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.summaryName {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reaction {
+    color: hsl(360, 100%, 67%);
+    background-color: hsla(360, 100%, 67%, 0.1);
+}
+
+.verbal {
+    color: hsl(166, 100%, 37%);
+    background-color: hsla(166, 100%, 37%, 0.1);
+}
+
+.memory {
+    color: hsl(39, 100%, 56%);
+    background-color: hsla(39, 100%, 56%, 0.1);
+}
+
+.visual {
+    color: hsl(234, 85%, 45%);
+    background-color: hsla(234, 85%, 45%, 0.1);
+
+}
+
+.summaryScore {
+    color: hsla(224, 30%, 27%, 0.5);
+}
+
+.summaryBold {
+    color: hsla(224, 30%, 27%, 1);
+    font-weight: 800;
+}
+
+.buttonCont {
+    display: block;
+    width: 315px;
+    margin: 0 auto;
+    border: none;
+    color: hsl(0, 0%, 100%);
+    font-weight: 700;
+    background-color: hsl(224, 30%, 27%);
+    padding: 17px 0;
+    border-radius: 28px;
+}
+
+@media (min-width: 600px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .cards {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+        display: flex;
+    }
+
+
+    .card1 {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .card2 {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cardDetail p {
+        font-size: 18px;
+    }
+
+    .result {
+        height: 200px;
+        width: 200px;
+    }
+
+    .result h2 {
+        font-size: 72px;
+        font-weight: 800;
+    }
+
+    .topSummary {
+        border-radius: 30px;
+        width: 368px;
+        height: 512px;
+        padding: 45px 40px;
+    }
+
+    .topSummary h1 {
+        font-size: 24px;
+    }
+
+    .summary {
+        padding: 45px 40px;
+    }
+
+    .summary h1 {
+        font-size: 22px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .summaryBar {
+        height: 55px;
+        width: 100%;
+        margin: 0;
+    }
+    .buttonCont {
+        margin-top: 40px;
+    }
+}
