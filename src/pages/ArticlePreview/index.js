@@ -1,7 +1,7 @@
 export default function ArticlePreview() {
     return (
         <div className="h-screen bg-[hsl(210,46%,95%)]">
-            <main className="pt-[74px] md:pt-[260px]">
+            <main className="pt-[74px] md:h-screen md:p-0 md:flex md:justify-center md:items-center">
                 <div className="w-[327px] rounded-[10px] overflow-clip md:flex md:w-[730px] mx-auto">
                     <div className="h-[200px] w-[327px] md:h-[280px] md:w-[285px]">
                         <img className="h-full w-full" src="/images/ArticlePreview/drawers.jpg" ></img>
