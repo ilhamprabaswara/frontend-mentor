@@ -7,8 +7,8 @@ export default function ArticlePreview() {
                         <img className="h-full w-full" src="/images/ArticlePreview/drawers.jpg" ></img>
                     </div>
                     <div className="bg-[hsl(0,0%,100%)] pt-[40px] px-[32px] pb-[20px] md:pr-[40px] md:py-[30px] md:w-[445px] md:h-[280px] md:box-padding">
-                        <h1 className="font-bold text-[hsl(217,19%,35%)] text-[16px] leading-[24px] tracking-[0.01em] w-[263px] mb-[12px] md:w-full md:text-[20px] md:leading-[28px]">Shift the overall look and feel by adding these wonderful touches to furniture in your home</h1>
-                        <p className="text-[hsl(214,17%,51%)] mb-[32px] md:text-[13px] md:mb-[20px]">Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.</p>
+                        <h1 className="font-bold text-[hsl(217,19%,35%)] text-[16px] leading-[24px] tracking-[0.01em] w-[263px] mb-[12px] md:w-full md:text-[20px] md:leading-[28px] md:w-[360px]">Shift the overall look and feel by adding these wonderful touches to furniture in your home</h1>
+                        <p className="text-[hsl(214,17%,51%)] mb-[32px] md:text-[13px] md:mb-[20px] md:w-[360px]">Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.</p>
                         <div className="flex justify-between items-center">
                             <div className="flex gap-[16px] items-center">
                                 <img className="rounded-full h-[40px] w-[40px]" src="/images/ArticlePreview/avatar-michelle.jpg" />
