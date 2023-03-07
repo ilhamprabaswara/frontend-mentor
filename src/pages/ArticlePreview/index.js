@@ -1,13 +1,13 @@
 export default function ArticlePreview() {
     return (
-        <div className="h-screen bg-[hsl(210,46%,95%)]">
+        <div className="h-screen bg-[hsl(210,46%,95%)] font-[Manrope]">
             <main className="pt-[74px] md:h-screen md:p-0 md:flex md:justify-center md:items-center">
                 <div className="w-[327px] rounded-[10px] overflow-clip md:flex md:w-[730px] mx-auto">
                     <div className="h-[200px] w-[327px] md:h-[280px] md:w-[285px]">
                         <img className="h-full w-full" src="/images/ArticlePreview/drawers.jpg" ></img>
                     </div>
                     <div className="bg-[hsl(0,0%,100%)] pt-[40px] px-[32px] pb-[20px] md:pr-[40px] md:py-[30px] md:w-[445px] md:h-[280px] md:box-padding">
-                        <h1 className="text-[hsl(217,19%,35%)] font-medium text-[16px] w-[263px] mb-[12px] md:w-full md:text-[20px]">Shift the overall look and feel by adding these wonderful touches to furniture in your home</h1>
+                        <h1 className="font-bold text-[hsl(217,19%,35%)] font-medium text-[16px] leading-[24px] tracking-[0.01em] w-[263px] mb-[12px] md:w-full md:text-[20px] md:leading-[28px]">Shift the overall look and feel by adding these wonderful touches to furniture in your home</h1>
                         <p className="text-[hsl(214,17%,51%)] mb-[32px] md:text-[13px]">Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.</p>
                         <div className="flex justify-between items-center">
                             <div className="flex gap-[16px] items-center">
