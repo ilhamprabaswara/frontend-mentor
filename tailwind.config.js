@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       fontFamily: {
         Manrope: ['Manrope', "sans-serif"],
+        Fraunces: ['Manrope', "serif"],
+        Montserrat: ['Montserrat', "sans-serif"]
+
       },
     },
   },
