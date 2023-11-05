@@ -7,13 +7,17 @@ const poppins = Poppins({
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
-
+interface DateType {
+  day: number;
+  month: number;
+  year: number;
+}
 const AgeCalculator = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [currentDate, setCurrentDate] = useState({
-    day: 1,
+  const [currentDate, setCurrentDate] = useState<DateType>({
+    day: 0,
     month: 0,
-    year: 1,
+    year: 0,
   });
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -48,41 +52,38 @@ const AgeCalculator = () => {
       <div className="flex h-screen w-screen items-center justify-center bg-[hsl(0_0%_94%)]">
         <div className="h-[486px] w-[339px] rounded-[25px] rounded-br-[100px] bg-white p-6 leading-[1.1] xl:h-[651px] xl:w-[840px] xl:p-14">
           <form onSubmit={handleSubmit}>
-            <div
-              onClick={() => setSubmitted(false)}
-              className="flex gap-4 text-[20px] xl:text-[32px]"
-            >
+            <div onClick={() => setSubmitted(false)} className="flex gap-4">
               <label
-                className="flex flex-col font-semibold uppercase"
+                className="flex flex-col text-[12px] font-semibold uppercase xl:text-[14px]"
                 htmlFor="dayInput"
               >
-                Date:
+                <span className="mb-[5px] xl:mb-[9px]">Date:</span>
                 <input
-                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6"
+                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
                   type="number"
                   name="dayInput"
                   id="dayInput"
                 />
               </label>
               <label
-                className="flex flex-col font-semibold uppercase"
+                className="flex flex-col text-[12px] font-semibold uppercase xl:text-[14px]"
                 htmlFor="monthInput"
               >
-                Month:
+                <span className="mb-[5px] xl:mb-[9px]">Month:</span>
                 <input
-                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6"
+                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
                   type="number"
                   name="monthInput"
                   id="monthInput"
                 />
               </label>
               <label
-                className="flex flex-col font-semibold uppercase"
+                className="flex flex-col text-[12px] font-semibold uppercase xl:text-[14px]"
                 htmlFor="yearInput"
               >
-                Year:
+                <span className="mb-[5px] xl:mb-[9px]">Year:</span>
                 <input
-                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6"
+                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
                   type="number"
                   name="yearInput"
                   id="yearInput"
@@ -97,33 +98,33 @@ const AgeCalculator = () => {
                   submitted ? "bg-[hsl(259_100%_65%)]" : "bg-black"
                 } z-20 flex h-[66px] w-[66px] items-center justify-center rounded-full xl:h-[96px] xl:flex-[0_0_96px]`}
               >
-                <div className="h-6 w-[26px] xl:h-11 xl:w-[46px]">
+                <span className="h-6 w-[26px] xl:h-11 xl:w-[46px]">
                   <Image
                     width={48}
                     height={44}
                     src={"./images/AgeCalculator/icon-arrow.svg"}
                     alt="arrow"
                   />
-                </div>
+                </span>
               </button>
             </div>
           </form>
           <div className="text-[54px] font-extrabold italic xl:text-[100px]">
             <p>
               <span className="text-[hsl(259_100%_65%)]">
-                {currentDate.year}
+                {currentDate.year || "- -"}
               </span>{" "}
               years
             </p>
             <p>
               <span className="text-[hsl(259_100%_65%)]">
-                {currentDate.month}
+                {currentDate.month || "- -"}
               </span>{" "}
               months
             </p>
             <p>
               <span className="text-[hsl(259_100%_65%)]">
-                {currentDate.day}
+                {currentDate.day || "- -"}
               </span>{" "}
               days
             </p>
