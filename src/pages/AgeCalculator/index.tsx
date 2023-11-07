@@ -19,33 +19,63 @@ const AgeCalculator = () => {
     month: 0,
     year: 0,
   });
+  const [err, setErr] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
   const handleSubmit = (e: any) => {
-    e.preventDefault();
-    setSubmitted(true);
     const day = e.target.dayInput.value;
     const month = e.target.monthInput.value;
     const year = e.target.yearInput.value;
-    const inputDate = new Date(year, month - 1, day);
-    const todayDate = new Date();
-    let years = todayDate.getFullYear() - inputDate.getFullYear();
-    let months = todayDate.getMonth() - inputDate.getMonth();
-    let days = todayDate.getDate() - inputDate.getDate();
-    if (days < 0) {
-      months--;
-      days += new Date(
-        todayDate.getFullYear(),
-        todayDate.getMonth(),
-        0,
-      ).getDate();
+    e.preventDefault();
+    if (day < 1 || day > 31) {
+      setErr({ ...err, day: "Input valid day" });
     }
+    if (month < 1 || month > 12) {
+      setErr({ ...err, month: "Must be a valid month" });
+    }
+    // if (day === "") {
+    //   setErr({
+    //     ...err,
+    //     day: "This field is required",
+    //   });
+    // }
+    // if (month === "") {
+    //   setErr({
+    //     ...err,
+    //     month: "This field is required",
+    //   });
+    // }
+    // if (year === "") {
+    //   setErr({
+    //     ...err,
+    //     year: "This field is required",
+    //   });
+    // }
 
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-    setCurrentDate(() => {
-      return { day: days, month: months, year: years };
-    });
+    // setSubmitted(true);
+    // const inputDate = new Date(year, month - 1, day);
+    // const todayDate = new Date();
+    // let years = todayDate.getFullYear() - inputDate.getFullYear();
+    // let months = todayDate.getMonth() - inputDate.getMonth();
+    // let days = todayDate.getDate() - inputDate.getDate();
+    // if (days < 0) {
+    //   months--;
+    //   days += new Date(
+    //     todayDate.getFullYear(),
+    //     todayDate.getMonth(),
+    //     0,
+    //   ).getDate();
+    // }
+
+    // if (months < 0) {
+    //   years--;
+    //   months += 12;
+    // }
+    // setCurrentDate(() => {
+    //   return { day: days, month: months, year: years };
+    // });
   };
   return (
     <main className={poppins.className}>
@@ -57,37 +87,57 @@ const AgeCalculator = () => {
                 className="flex flex-col text-[12px] font-semibold uppercase xl:text-[14px]"
                 htmlFor="dayInput"
               >
-                <span className="mb-[5px] xl:mb-[9px]">Date:</span>
+                <span className="mb-[5px] xl:mb-[9px]">Day</span>
                 <input
+                  placeholder="DD"
                   className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
                   type="number"
                   name="dayInput"
                   id="dayInput"
                 />
+                {err.day && (
+                  <p className="pt-3 text-[8px] font-normal normal-case italic text-red-500 xl:text-[14px]">
+                    {err.day}
+                  </p>
+                )}
               </label>
               <label
                 className="flex flex-col text-[12px] font-semibold uppercase xl:text-[14px]"
                 htmlFor="monthInput"
               >
-                <span className="mb-[5px] xl:mb-[9px]">Month:</span>
+                <span className="mb-[5px] xl:mb-[9px]">Month</span>
                 <input
-                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
+                  placeholder="MM"
+                  className={`${
+                    err.month ? "outline outline-1 outline-red-500" : ""
+                  } no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]`}
                   type="number"
                   name="monthInput"
                   id="monthInput"
                 />
+                {err.month && (
+                  <p className="pt-3 text-[8px] font-normal normal-case italic text-red-500 xl:text-[14px]">
+                    {err.month}
+                  </p>
+                )}
               </label>
               <label
                 className="flex flex-col text-[12px] font-semibold uppercase xl:text-[14px]"
                 htmlFor="yearInput"
               >
-                <span className="mb-[5px] xl:mb-[9px]">Year:</span>
+                <span className="mb-[5px] xl:mb-[9px]">Year</span>
                 <input
+                  placeholder="YY"
                   className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
                   type="number"
                   name="yearInput"
                   id="yearInput"
                 />
+                {err.year && (
+                  <p className="pt-3 text-[8px] font-normal normal-case italic text-red-500 xl:text-[14px]">
+                    {err.year}
+                  </p>
+                )}
               </label>
             </div>
             <div className="relative mt-8 mb-6 flex items-center justify-center xl:my-0">
