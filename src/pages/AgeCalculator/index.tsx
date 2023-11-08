@@ -15,9 +15,9 @@ interface DateType {
 const AgeCalculator = () => {
   const [submitted, setSubmitted] = useState(false);
   const [currentDate, setCurrentDate] = useState<DateType>({
-    day: 0,
-    month: 0,
-    year: 0,
+    day: -1,
+    month: -1,
+    year: -1,
   });
   const [err, setErr] = useState({
     day: "",
@@ -25,57 +25,79 @@ const AgeCalculator = () => {
     year: "",
   });
   const handleSubmit = (e: any) => {
+    e.preventDefault();
     const day = e.target.dayInput.value;
     const month = e.target.monthInput.value;
     const year = e.target.yearInput.value;
-    e.preventDefault();
-    if (day < 1 || day > 31) {
-      setErr({ ...err, day: "Input valid day" });
+    const inputDate = new Date(year, month - 1, day);
+    const todayDate = new Date();
+    let years = todayDate.getFullYear() - inputDate.getFullYear();
+    let months = todayDate.getMonth() - inputDate.getMonth();
+    let days = todayDate.getDate() - inputDate.getDate();
+    if (!day || !month || !year) {
+      if (day === "") {
+        setErr((err) => ({
+          ...err,
+          day: "This field is required",
+        }));
+      }
+      if (month === "") {
+        setErr((err) => ({
+          ...err,
+          month: "This field is required",
+        }));
+      }
+      if (year === "") {
+        setErr((err) => ({
+          ...err,
+          year: "This field is required",
+        }));
+      }
+    } else {
+      setErr({
+        day: "",
+        month: "",
+        year: "",
+      });
+      if (day < 1 || day > 31) {
+        setErr((err) => ({ ...err, day: "Input valid day" }));
+      }
+      if (month < 1 || month > 12) {
+        setErr((err) => ({ ...err, month: "Must be a valid month" }));
+      }
+      if (inputDate > todayDate) {
+        setErr((err) => ({ ...err, day: "Date is in the future!" }));
+      }
+      console.log(err.day);
     }
-    if (month < 1 || month > 12) {
-      setErr({ ...err, month: "Must be a valid month" });
+    console.log(err.day === "");
+    if (
+      err.day === "" &&
+      err.month === "" &&
+      err.year === "" &&
+      day !== "" &&
+      month !== "" &&
+      year !== ""
+    ) {
+      console.log("Masuk");
+      if (days < 0) {
+        months--;
+        days += new Date(
+          todayDate.getFullYear(),
+          todayDate.getMonth(),
+          0,
+        ).getDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+      setCurrentDate(() => {
+        return { day: days, month: months, year: years };
+      });
     }
-    // if (day === "") {
-    //   setErr({
-    //     ...err,
-    //     day: "This field is required",
-    //   });
-    // }
-    // if (month === "") {
-    //   setErr({
-    //     ...err,
-    //     month: "This field is required",
-    //   });
-    // }
-    // if (year === "") {
-    //   setErr({
-    //     ...err,
-    //     year: "This field is required",
-    //   });
-    // }
-
-    // setSubmitted(true);
-    // const inputDate = new Date(year, month - 1, day);
-    // const todayDate = new Date();
-    // let years = todayDate.getFullYear() - inputDate.getFullYear();
-    // let months = todayDate.getMonth() - inputDate.getMonth();
-    // let days = todayDate.getDate() - inputDate.getDate();
-    // if (days < 0) {
-    //   months--;
-    //   days += new Date(
-    //     todayDate.getFullYear(),
-    //     todayDate.getMonth(),
-    //     0,
-    //   ).getDate();
-    // }
-
-    // if (months < 0) {
-    //   years--;
-    //   months += 12;
-    // }
-    // setCurrentDate(() => {
-    //   return { day: days, month: months, year: years };
-    // });
+    setSubmitted(true);
   };
   return (
     <main className={poppins.className}>
@@ -90,7 +112,9 @@ const AgeCalculator = () => {
                 <span className="mb-[5px] xl:mb-[9px]">Day</span>
                 <input
                   placeholder="DD"
-                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
+                  className={`${
+                    err.day ? "outline outline-1 outline-red-500" : ""
+                  } no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]`}
                   type="number"
                   name="dayInput"
                   id="dayInput"
@@ -128,7 +152,9 @@ const AgeCalculator = () => {
                 <span className="mb-[5px] xl:mb-[9px]">Year</span>
                 <input
                   placeholder="YY"
-                  className="no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]"
+                  className={`${
+                    err.year ? "outline outline-1 outline-red-500" : ""
+                  } no-spinner h-[52px] w-[86px] rounded-[5px] border border-[hsl(0_0%_86%)] px-[15px] text-[20px] focus:outline-[hsl(259_100%_65%)] xl:h-[70px] xl:w-[158px] xl:px-6 xl:text-[32px]`}
                   type="number"
                   name="yearInput"
                   id="yearInput"
@@ -162,19 +188,19 @@ const AgeCalculator = () => {
           <div className="text-[54px] font-extrabold italic xl:text-[100px]">
             <p>
               <span className="text-[hsl(259_100%_65%)]">
-                {currentDate.year || "- -"}
+                {currentDate.year !== -1 ? currentDate.year : "- -"}
               </span>{" "}
               years
             </p>
             <p>
               <span className="text-[hsl(259_100%_65%)]">
-                {currentDate.month || "- -"}
+                {currentDate.month !== -1 ? currentDate.month : "- -"}
               </span>{" "}
               months
             </p>
             <p>
               <span className="text-[hsl(259_100%_65%)]">
-                {currentDate.day || "- -"}
+                {currentDate.day !== -1 ? currentDate.day : "- -"}
               </span>{" "}
               days
             </p>
